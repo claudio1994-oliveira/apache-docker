@@ -1,12 +1,15 @@
 #!/bin/bash
 
+# Carregar o módulo MPM
+echo "LoadModule mpm_event_module modules/mod_mpm_event.so" >> /usr/local/apache2/conf/httpd.conf
+
 # Iniciar Apache em modo de segundo plano para que Certbot possa verificar o domínio
 apachectl start
 
 # Verificar se os certificados já existem
 if [ ! -f /etc/letsencrypt/live/example.com/fullchain.pem ]; then
   # Executar Certbot para obter certificados
-  certbot certonly --apache --non-interactive --agree-tos -m seu-email@example.com -d example.com -d www.example.com
+  certbot certonly --apache --non-interactive --agree-tos -m seu-email@valid-email.com -d example.com -d www.example.com
   
   # Copiar os certificados para o diretório de configuração do Apache
   cp /etc/letsencrypt/live/example.com/fullchain.pem /usr/local/apache2/conf/server.crt

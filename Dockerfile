@@ -10,10 +10,10 @@ COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 COPY ./my-httpd-ssl.conf /usr/local/apache2/conf/extra/httpd-ssl.conf
 
 # Copiar seu site para o diretório padrão do Apache
-COPY ./public/ /usr/local/apache2/htdocs/
+COPY ./public-html/ /usr/local/apache2/htdocs/
 
 # Copiar o arquivo .htaccess para o diretório do site
-COPY ./public/.htaccess /usr/local/apache2/htdocs/.htaccess
+COPY ./public-html/.htaccess /usr/local/apache2/htdocs/.htaccess
 
 # Copiar o script de entrada
 COPY ./scripts/entrypoint.sh /entrypoint.sh

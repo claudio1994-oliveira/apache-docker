@@ -8,5 +8,8 @@ services:
       - "443:443"
     volumes:
       - ./public:/usr/local/apache2/htdocs
-      - ./certs:/usr/local/apache2/conf
+      - ./certs:/etc/letsencrypt
     restart: always
+
+volumes:
+  certs:
